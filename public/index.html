@@ -7,16 +7,40 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<title>tvtrackr</title>
 	<link rel='icon' type='image/png' href='favicon.png'>
+
+	<!-- todo bootstrap SASs -->
+	<!-- inject:css -->
+  	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
+  	<!-- endinject -->
+
 	<link rel='stylesheet' href='stylesheets/style.css'>
 </head>
 <body>
 
 	<!-- angular-strap navbar partial -->
-	<div ng-include="''"></div>
+	<div ng-include="'views/nav.html'"></div>
 
 	<div ui-view></div>
 
+	<!-- inject:js -->
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-messages/angular-messages.js"></script>
+	<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+	<script src="bower_components/moment/moment.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="bower_components/angular-strap/dist/angular-strap.min.js"></script>
+	<script src="bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
+	<!-- endinject -->
+	
 	<script src='javascripts/app.js'></script>
+	<script src='javascripts/controllers/main.js'></script>
+	<script src='javascripts/controllers/showDetails.js'></script>
+	<script src='javascripts/controllers/login.js'></script>
+	<script src='javascripts/controllers/signup.js'></script>
+	<script src='javascripts/controllers/addShow.js'></script>
 
 </body>
 </html>

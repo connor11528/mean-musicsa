@@ -8,7 +8,40 @@ var app = angular.module('tvtrackr', [
 	'mgcrea.ngStrap'
 ])
 
-app.config([function(){
+app.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider){
 
+	$locationProvider.html5Mode(true).hashPrefix('!')
 
+	$stateProvider
+		.state('home', {
+			url: '/',
+			templateUrl: 'views/main.html',
+			controller: 'MainCtrl'
+		})
+		// Shows
+		.state('shows', {
+			url: '/shows'
+		})
+		.state('shows.details', {
+			templateUrl: 'views/shows/details.html',
+			controller: 'ShowDetailsCtrl'
+		})
+		.state('shows.add', {
+			url: '/add',
+			templateUrl: 'views/shows/add.html',
+			controller: 'AddShowCtrl'
+		})
+
+		// Authentication
+		.state('login', {
+			url: '/login',
+			templateUrl: 'views/login.html',
+			controller: 'LoginCtrl'
+		})
+
+		.state('signup', {
+			url: '/signup',
+			templateUrl: 'views/signup.html',
+			controller: 'SignupCtrl'
+		})
 }])
