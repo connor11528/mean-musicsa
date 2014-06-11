@@ -8,12 +8,14 @@ gulp.task('injectFiles', function(){
 	// get main bower files
 	var files = bowerFiles()
 
-	gulp.src('./public/index.html')
-		// inject into index.html
-		.pipe(inject(files, { read: false }))
-		.pipe(gulp.dest("./public"))
+	gulp.src('index.html', { cwd: './public' })
+        // inject into index.html
+		.pipe(inject(files, {
+            read: false,
+            ignorePath: '/public'
+        }))
+        .pipe(gulp.dest("./public"))
 })
-
 
 gulp.task('compileSass', function(){
 	// gives some wack error.
@@ -25,7 +27,7 @@ gulp.task('compileSass', function(){
 
 // recompile on file update
 gulp.task('watch', function(){
-	gulp.watch('public/stylesheets/*.scss', ['compileSass'])
+	// gulp.watch('public/stylesheets/*.scss', ['compileSass'])
 })
 
 gulp.task('default', ['injectFiles', 'compileSass', 'watch'])
