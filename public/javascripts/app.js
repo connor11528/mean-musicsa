@@ -8,7 +8,7 @@ var app = angular.module('tvtrackr', [
 	'mgcrea.ngStrap'
 ])
 
-app.config(['$stateProvider', '$locationProvider', function($stateProvider, $locationProvider){
+app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function($stateProvider, $locationProvider, $urlRouterProvider){
 
 	$locationProvider.html5Mode(true).hashPrefix('!')
 
@@ -44,4 +44,6 @@ app.config(['$stateProvider', '$locationProvider', function($stateProvider, $loc
 			templateUrl: 'views/signup.html',
 			controller: 'SignupCtrl'
 		})
+
+		$urlRouterProvider.otherwise('/')
 }])
