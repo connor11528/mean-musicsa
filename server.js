@@ -10,6 +10,6 @@ require('./server/config/express')(app, envConfig)
 // ROUTES CONFIG
 require('./server/config/routes')(app)
 
-app.listen(app.get('port'), function(){
-	console.log('Express server listening on port ' + app.get('port'))
-})
+// start server..
+app.listen(envConfig.port)
+console.log('Listening on port ', envConfig.port, '...')

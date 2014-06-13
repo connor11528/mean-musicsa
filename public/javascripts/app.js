@@ -3,9 +3,8 @@
 var app = angular.module('tvtrackr', [
 	'ngCookies', 
 	'ngResource', 
-	'ngMessages', 
 	'ui.router', 
-	'mgcrea.ngStrap'
+	'mgcrea.ngStrap'	// angular-strap
 ])
 
 app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', function($stateProvider, $locationProvider, $urlRouterProvider){
@@ -23,6 +22,7 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', functio
 			url: '/shows'
 		})
 		.state('shows.details', {
+			url: '/:showId',
 			templateUrl: 'views/shows/details.html',
 			controller: 'ShowDetailsCtrl'
 		})

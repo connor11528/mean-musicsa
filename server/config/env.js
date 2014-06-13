@@ -3,11 +3,11 @@ var path = require('path'),
 
 module.exports = {
 	development: {
-		root: rootPath,
+		rootPath: rootPath,
 		port: process.env.PORT || 3000,
 	},
 	production: {
-		root: rootPath,
+		rootPath: rootPath,
 		port: process.env.PORT || 80
 	}
 }

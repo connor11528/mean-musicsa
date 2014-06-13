@@ -1,18 +1,27 @@
 var express = require('express'),
+	passport = require('passport'),
 	cookieParser = require('cookie-parser'),
 	bodyParser = require('body-parser'),
 	methodOverride = require('method-override'),
+	session = require('express-session'),
 	path = require('path'),
 	favicon = require('static-favicon'),
 	logger = require('morgan')
 
 module.exports = function(app, envConfig){
+	app.configure(function(){
+		app.set('views', envConfig.rootPath + '/server/views');
+		app.set('view engine', 'jade')
+		app.use(logger('dev'))
+		app.use(favicon())
+		app.use(cookieParser())
+		app.use(bodyParser())
+		app.use(methodOverride())	// allows app.put() and app.delete()
+		app.use(session({ secret: 'supersecrettvtrackr' }))
+		app.use(passport.initialize())
+		app.use(passport.session())		// tell passport to use sessions
 
-	app.use(express.static(envConfig.root + 'public'))
-	app.set('port', envConfig.port)
-	app.use(favicon());
-	app.use(logger('dev'));
-	app.use(bodyParser());
-	app.use(cookieParser());
-	app.use(methodOverride());
+		// static routing to public directory
+		app.use(express.static(envConfig.rootPath + '/public'))
+	})
 }
