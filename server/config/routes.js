@@ -23,4 +23,10 @@ module.exports = function(app){
 			currentUser: req.user
 		})
 	})
+
+	// ERROR handling middleware
+	app.use(function(err, req, res, next){
+		console.error(err.stack)
+		res.send(500, { message: err.message })
+	})
 }

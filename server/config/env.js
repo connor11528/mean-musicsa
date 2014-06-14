@@ -3,10 +3,12 @@ var path = require('path'),
 
 module.exports = {
 	development: {
+		database: 'localhost',
 		rootPath: rootPath,
 		port: process.env.PORT || 3000,
 	},
 	production: {
+		database: '',
 		rootPath: rootPath,
 		port: process.env.PORT || 80
 	}

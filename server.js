@@ -7,6 +7,9 @@ var app = express()
 // EXPRESS CONFIG
 require('./server/config/express')(app, envConfig)
 
+// DATABASE
+require('./server/config/mongoose')(envConfig)
+
 // ROUTES CONFIG
 require('./server/config/routes')(app)
 
