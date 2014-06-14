@@ -13,7 +13,7 @@ module.exports = function(app){
 
 	// undefined API routes
 	app.all('/api/*', function(req, res){
-		res.send(404)
+		res.send(404, { message: 'Route not defined'})
 	})
 
 	// everything else handled by angular

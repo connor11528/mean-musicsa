@@ -19,18 +19,19 @@ app.config(['$stateProvider', '$locationProvider', '$urlRouterProvider', functio
 		})
 		// Shows
 		.state('shows', {
-			url: '/shows'
-		})
-		.state('shows.details', {
-			url: '/:showId',
-			templateUrl: 'views/shows/details.html',
-			controller: 'ShowDetailsCtrl'
+			url: '/shows',
+			template: "<div class='container' ui-view></div>"
 		})
 		.state('shows.add', {
 			url: '/add',
 			templateUrl: 'views/shows/add.html',
 			controller: 'AddShowCtrl'
 		})
+		// .state('shows.details', {
+		// 	url: '/:showId',
+		// 	templateUrl: 'views/shows/details.html',
+		// 	controller: 'ShowDetailsCtrl'
+		// })
 
 		// Authentication
 		.state('login', {

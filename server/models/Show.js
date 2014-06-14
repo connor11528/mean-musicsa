@@ -1,7 +1,7 @@
 var mongoose = require('mongoose')
 
 var showSchema = mongoose.Schema({
-	name: { type: String, unique: true }
+	name: { type: String, unique: true },
 	genre: [String],
 	rating: Number,
 	ratingCount: Number,

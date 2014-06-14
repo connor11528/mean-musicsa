@@ -3,7 +3,7 @@ var path = require('path'),
 
 module.exports = {
 	development: {
-		database: 'localhost',
+		database: 'mongodb://localhost/tvtrackr',
 		rootPath: rootPath,
 		port: process.env.PORT || 3000,
 	},

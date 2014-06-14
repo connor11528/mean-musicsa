@@ -5,4 +5,7 @@ var mongoose = require('mongoose'),
 
 module.exports = function(envConfig){
 	mongoose.connect(envConfig.database)
+
+	var db = mongoose.connection;
+	db.on('error', console.error.bind(console, 'Error connecting to the database!'))
 }
