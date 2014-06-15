@@ -24,7 +24,7 @@ app.factory('Auth', ['$http', '$location', '$rootScope', '$cookieStore', functio
 				.success(function(){
 					$location.path('/login')
 
-					toast.success('Account created')
+					toastr.success('Account created')
 					// should log user in and direct to homepage..
 				})
 				.error(function(response){
@@ -36,7 +36,7 @@ app.factory('Auth', ['$http', '$location', '$rootScope', '$cookieStore', functio
 				$rootScope.currentUser = null
 				$cookieStore.remove('user')
 
-				toast.notify('Logout successful')
+				toastr.info('Logout successful')
 			})
 		}
 	}

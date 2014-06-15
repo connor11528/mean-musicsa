@@ -23,5 +23,14 @@ module.exports = function(app, envConfig){
 
 		// static routing to public directory
 		app.use(express.static(envConfig.rootPath + '/public'))
+
+		// custom middleware
+		app.use(function(req, res, next){
+			if(req.user){
+				// if user has been authenticated, give them a cookie
+				res.cookie('user', JSON.stringify(req.user))
+			}
+			next()
+		})
 	})
 }

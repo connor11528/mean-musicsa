@@ -10,7 +10,7 @@ var userSchema = mongoose.Schema({
 // secure password storage before save to database
 userSchema.pre('save', function(next){
 	var user = this;
-	if (!user.hasModified('password')) return next();
+	if (!user.isModified('password')) return next();
 
 	// generate salt
 	bcrypt.genSalt(10, function(err, salt){

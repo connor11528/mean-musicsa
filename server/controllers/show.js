@@ -1,4 +1,3 @@
-
 var Show = require('mongoose').model('Show')
 
 module.exports = {
@@ -23,6 +22,15 @@ module.exports = {
 			if (err) return next(err)
 
 			res.send(show)
+		})
+	},
+	create: function(req, res, next){
+		var show = new Show({
+			// show details
+		})
+
+		show.save(function(err){
+			
 		})
 	}
 }

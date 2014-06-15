@@ -1,5 +1,7 @@
-var awsCtrl = require('../controllers/aws'),
-	showCtrl = require('../controllers/show')
+var passport = require('passport'),
+	awsCtrl = require('../controllers/aws'),
+	showCtrl = require('../controllers/show'),
+	authCtrl = require('../controllers/auth')
 
 module.exports = function(app){
 
@@ -9,6 +11,13 @@ module.exports = function(app){
 	// API Routes
 	app.get('/api/shows', showCtrl.allShows)
 	app.get('/api/shows/:showId', showCtrl.getShow)
+	app.post('/api/shows', ensureAuthenticated, showCtrl.create)
+
+	// Authentication Routes
+	// Error: Unknown authentication strategy "local"
+	app.post('/api/login', passport.authenticate('local'), authCtrl.login)
+	app.post('/api/signup', authCtrl.signup)
+	app.get('/api/logout', authCtrl.logout)
 
 
 	// undefined API routes
@@ -29,4 +38,10 @@ module.exports = function(app){
 		console.error(err.stack)
 		res.send(500, { message: err.message })
 	})
+}
+
+// utility to protect routes from unauthenticated requests
+function ensureAuthenticated(req, res, next){
+	if(req.isAuthenticated()) next();
+	else res.send(401)
 }

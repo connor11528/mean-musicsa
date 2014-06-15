@@ -10,6 +10,9 @@ require('./server/config/express')(app, envConfig)
 // DATABASE
 require('./server/config/mongoose')(envConfig)
 
+// PASSPORT CONFIG
+require('./server/config/passport')
+
 // ROUTES CONFIG
 require('./server/config/routes')(app)
 
